@@ -1,6 +1,6 @@
 module.exports = {
   FRONTEND_URL: "https://peaceful-dawn-30217.herokuapp.com",
   BACKEND_URL: "https://peaceful-dawn-30217.herokuapp.com",
-  STRIPE_PK: process.env.STRIPE_PK,
-  STRIPE_SK: process.env.STRIPE_SK,
+  STRIPE_PK:
+    "pk_live_51INpUsKsLndlUUqstg87dwwArN3NTReIQ5bywThaIjleSKd9xtV917Kvj7FyE2Z9vY1CUyaiPmsIe0dpkMuYK9fZ00jkXlxHWS",
 };

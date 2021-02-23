@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "concurrently \"nodemon index.js\" \"cd frontend && npm run start\"",
-    "stage": "set NODE_ENV=staging&& nodemon index.js",
+    "stage": "concurrently \"set NODE_ENV=staging&& nodemon index.js\" \"cd frontend && npm run build\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "cd frontend && npm i && npm run build"
   },
