@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import LandingPage from "./LandingPage";
 import SuccessPage from "./SuccessPage";
+import "./styles/test.css";
 
 function App() {
   return (

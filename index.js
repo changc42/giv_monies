@@ -9,32 +9,32 @@ const {
 } = require("./config/index.js");
 const stripe = require("stripe")(STRIPE_SK);
 const cors = require("cors");
-
-const port = 5000;
+const bodyParser = require("body-parser");
 
 app.use(cors());
+app.use(bodyParser.json());
 
 app.post("/create-checkout-session", async (req, res) => {
+  let { line_items } = req.body;
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
-    line_items: [
-      {
-        price_data: {
-          currency: "usd",
-          product_data: {
-            name: "Joy Of Giving Dollar",
-          },
-          unit_amount: 100,
-        },
-        quantity: 1,
-      },
-    ],
+    line_items,
     mode: "payment",
     success_url: `${FRONTEND_URL}/success`,
     cancel_url: `${FRONTEND_URL}/cancel`,
   });
 
   res.json({ id: session.id });
+});
+
+app.get("/stripe/prices", async (req, res) => {
+  res.json(await stripe.prices.list({ expand: ["data.product"] }));
+});
+
+app.get("/stripe/prices/:price_id", async (req, res) => {
+  let { price_id } = req.params;
+  let prices = await stripe.prices.retrieve(price_id, { expand: ["product"] });
+  res.json(prices);
 });
 
 app.use(express.static("frontend/build"));
