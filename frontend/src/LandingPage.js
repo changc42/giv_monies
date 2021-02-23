@@ -2,6 +2,7 @@ import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import config from "./config";
 const { BACKEND_URL, STRIPE_PK } = config;
+console.log(config, "config");
 const stripePromise = loadStripe(STRIPE_PK);
 
 export default function LandingPage() {
