@@ -28,7 +28,9 @@ app.post("/create-checkout-session", async (req, res) => {
 });
 
 app.get("/stripe/prices", async (req, res) => {
-  res.json(await stripe.prices.list({ expand: ["data.product"] }));
+  res.json(
+    await stripe.prices.list({ active: true, expand: ["data.product"] })
+  );
 });
 
 app.get("/stripe/prices/:price_id", async (req, res) => {
