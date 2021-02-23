@@ -19,12 +19,15 @@ export default function LandingPage() {
     return null;
   } else {
     return (
-      <div style={{ display: "flex" }}>
-        {prices.map((price) => (
-          <div style={{ margin: "10px" }}>
-            <ProductCard price={price} />
-          </div>
-        ))}
+      <div>
+        <h1>Give Caleb Money</h1>
+        <div style={{ display: "flex" }}>
+          {prices.map((price) => (
+            <div style={{ margin: "10px" }}>
+              <ProductCard price={price} />
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
