@@ -1,10 +1,8 @@
 import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import config from "./config";
-const { BACKEND_URL } = config;
-const stripePromise = loadStripe(
-  "pk_test_51INpUsKsLndlUUqsA8YqZYxRJ5oYgsfzx0X0qQJIi4L9dGSfB8o0EUnkJzRLHBf0aqx3jJkY3Xud1li6YAJXMxod00DqApkpcP"
-);
+const { BACKEND_URL, STRIPE_PK } = config;
+const stripePromise = loadStripe(STRIPE_PK);
 
 export default function LandingPage() {
   const handleClick = async (event) => {

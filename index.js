@@ -1,11 +1,14 @@
 var express = require("express");
 var app = express();
 const path = require("path");
-const stripe = require("stripe")(
-  "sk_test_51INpUsKsLndlUUqs1ATJ0Z5fyerZ44GNeLz5szCUiSyrYc6DjpODRMwczYdktpaQXCFZk6S7zTOySPLrGWEuFy7R00IFPhQxBV"
-);
+const {
+  FRONTEND_URL,
+  BACKEND_URL,
+  STRIPE_PK,
+  STRIPE_SK,
+} = require("./config/index.js");
+const stripe = require("stripe")(STRIPE_SK);
 const cors = require("cors");
-const { FRONTEND_URL, BACKEND_URL } = require("./config");
 
 const port = 5000;
 
@@ -42,5 +45,5 @@ app.use("*", (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Example app listening at http://localhost:${PORT}`);
+  console.log(`Example app listening at ${FRONTEND_URL}:${PORT}`);
 });
