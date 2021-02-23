@@ -1,15 +1,11 @@
-import dev from "./dev";
-import prod from "./prod";
-import stage from "./stage";
-
 let output;
 
 if (process.env.NODE_ENV == "production") {
-  output = prod;
+  output = require("./prod");
 } else if (process.env.NODE_ENV == "staging") {
-  output = stage;
+  output = require("./stage");
 } else {
-  output = dev;
+  output = require("./dev");
 }
 
 export default output;

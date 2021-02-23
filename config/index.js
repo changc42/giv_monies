@@ -1,15 +1,11 @@
-const { default: prod } = require("./prod");
-const stage = require("./stage");
-const dev = require("./dev");
-
 let output;
 
 if (process.env.NODE_ENV == "production") {
-  output = prod;
+  output = require("./prod");
 } else if (process.env.NODE_ENV == "staging") {
-  output = stage;
+  output = require("./stage");
 } else {
-  output = dev;
+  output = require("./dev");
 }
 
 module.exports = output;
