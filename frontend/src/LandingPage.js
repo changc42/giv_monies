@@ -17,7 +17,6 @@ export default function LandingPage() {
 
   let myLocationString = [];
   for (const prop in window.location) {
-    console.log("Hi", prop);
     myLocationString.push(prop);
   }
 
