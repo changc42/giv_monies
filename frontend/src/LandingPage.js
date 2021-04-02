@@ -15,21 +15,12 @@ export default function LandingPage() {
     setIsLoading(false);
   }, []);
 
-  let myLocationString = [];
-  for (const prop in window.location) {
-    myLocationString.push(prop);
-  }
-
   if (isLoading) {
     return null;
   } else {
     return (
       <div>
         <h1>Give Caleb Money</h1>
-        {myLocationString.map((e) => {
-          <p>{e}</p>;
-        })}
-        <p>{`${window.location.host}`}</p>
         <div style={{ display: "flex" }}>
           {prices.map((price) => (
             <div style={{ margin: "10px" }}>

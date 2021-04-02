@@ -49,7 +49,7 @@ app.get("/stripe/prices/:price_id", async (req, res) => {
   res.json(prices);
 });
 
-app.use(express.static("frontend/build"));
+app.use(express.static("../frontend/build"));
 
 app.use("*", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "frontend", "build", "index.html"));
@@ -57,5 +57,7 @@ app.use("*", (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Example app listening at port ${PORT}`);
+  console.log(
+    `Example app listening at port ${PORT}, NODE_ENV=${process.env.NODE_ENV}`
+  );
 });
