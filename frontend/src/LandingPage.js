@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import config from "./config";
 import axios from "axios";
 import ProductCard from "./components/ProductCard";
-const { BACKEND_URL, STRIPE_PK } = config;
+const { BACKEND_URL } = config;
 
 export default function LandingPage() {
   let [isLoading, setIsLoading] = useState(true);
@@ -15,12 +15,22 @@ export default function LandingPage() {
     setIsLoading(false);
   }, []);
 
+  let myLocationString = [];
+  for (const prop in window.location) {
+    console.log("Hi", prop);
+    myLocationString.push(prop);
+  }
+
   if (isLoading) {
     return null;
   } else {
     return (
       <div>
         <h1>Give Caleb Money</h1>
+        {myLocationString.map((e) => {
+          <p>{e}</p>;
+        })}
+        <p>{`${window.location.host}`}</p>
         <div style={{ display: "flex" }}>
           {prices.map((price) => (
             <div style={{ margin: "10px" }}>

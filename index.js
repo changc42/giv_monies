@@ -1,18 +1,17 @@
 var express = require("express");
 var app = express();
 const path = require("path");
-const {
-  FRONTEND_URL,
-  BACKEND_URL,
-  STRIPE_PK,
-  STRIPE_SK,
-} = require("./config/index.js");
+const { FRONTEND_URL, STRIPE_PK, STRIPE_SK } = require("./config/index.js");
 const stripe = require("stripe")(STRIPE_SK);
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
 app.use(cors());
 app.use(bodyParser.json());
+
+app.get("/hostname", (req, res) => {
+  res.end(req.get("host"));
+});
 
 app.post("/create-checkout-session", async (req, res) => {
   let { line_items } = req.body;
